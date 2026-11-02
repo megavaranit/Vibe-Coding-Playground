@@ -2,7 +2,7 @@
 
 **Последнее обновление:** 2026-11-02
 **Текущий этап:** 7 — Футер и полировка
-**Следующая задача:** полировка Hero (mesh-gradient keyframes, blur-stagger заголовка), проверка на 375/768/1440, a11y и Lighthouse.
+**Следующая задача:** полировка Hero (mesh-gradient keyframes, blur-stagger заголовка), проверка на 375/768/1440, a11y и Lighthouse; затем деплой.
 
 ## Прогресс по этапам
 
@@ -12,7 +12,7 @@
 - [x] Настроен алиас `@/`
 - [x] Настроены ESLint и Prettier
 - [x] Папка `docs/` и `.cursor/rules/` на месте
-- [x] Первый коммит
+- [x] Первый коммит (`c5f5bfb` — Initial commit: scaffold Vibe Coding Playground.)
 
 ### 1. Фундамент
 - [x] `tokens.css`, `themes.css`, `effects.css`
@@ -64,7 +64,7 @@
 - [ ] Lighthouse: Performance и Accessibility от 90
 
 ### 8. Деплой
-- [x] Репозиторий на GitHub
+- [x] Репозиторий на GitHub: https://github.com/megavaranit/Vibe-Coding-Playground
 - [ ] Деплой на Vercel / GitHub Pages
 - [ ] Проверена публичная ссылка
 
@@ -74,6 +74,8 @@
 - Адаптивность в демо — через container queries.
 - TypeScript зафиксирован на 5.9: typescript-eslint пока не поддерживает TypeScript 7.
 - `npm install` использует `legacy-peer-deps` (см. `.npmrc`) из‑за peer-зависимостей ESLint-стека.
+- Репозиторий публичный, remote `origin` → `main` (аккаунт `megavaranit`).
+- Инициализация сверена с `ARCHITECTURE.md`: `npm run build` и `npm run lint` проходят, `npm run dev` поднимается.
 
 ## Известные проблемы
 Нет.
