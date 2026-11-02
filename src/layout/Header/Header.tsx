@@ -26,7 +26,10 @@ export function Header() {
       style={{ transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)' }}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <a href="#hero" className="font-display text-sm font-medium tracking-wide">
+        <a
+          href="#hero"
+          className="font-display text-sm font-medium tracking-wide focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
+        >
           {SITE_TITLE}
         </a>
         <NavLinks className="hidden md:block" />
@@ -34,7 +37,7 @@ export function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-[var(--radius-control)] border border-border md:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-[var(--radius-control)] border border-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-violet md:hidden"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
             onClick={() => setMenuOpen((open) => !open)}

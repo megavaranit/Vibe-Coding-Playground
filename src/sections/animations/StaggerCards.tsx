@@ -1,3 +1,6 @@
+/**
+ * StaggerCards: каскад карточек. Главная техника — staggerChildren 0.08.
+ */
 import { motion } from 'motion/react';
 import { fadeUp, staggerContainer, viewportOnce } from '@/lib/motion';
 import { animationCards } from '@/sections/animations/animations.data';
@@ -14,11 +17,11 @@ export function StaggerCards() {
       viewport={viewportOnce}
     >
       {animationCards.map((card) => (
-        <motion.div key={card.title} variants={fadeUp}>
+        <motion.div key={card.title} variants={fadeUp} className="h-full">
           <HoverTiltCard>
             <Badge>{card.tag}</Badge>
             <h3 className="mt-4 font-display text-xl">{card.title}</h3>
-            <p className="mt-2 text-muted">{card.description}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{card.description}</p>
           </HoverTiltCard>
         </motion.div>
       ))}

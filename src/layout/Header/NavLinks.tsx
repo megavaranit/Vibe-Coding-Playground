@@ -40,9 +40,10 @@ export function NavLinks({ onNavigate, className }: NavLinksProps) {
               href={`#${section.id}`}
               onClick={onNavigate}
               className={cn(
-                'text-sm transition-colors duration-300 hover:text-text',
+                'rounded-sm text-sm transition-colors duration-300 hover:text-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet',
                 activeId === section.id ? 'text-text' : 'text-muted',
               )}
+              aria-current={activeId === section.id ? 'true' : undefined}
             >
               {section.navLabel}
             </a>

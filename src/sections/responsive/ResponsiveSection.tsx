@@ -1,5 +1,5 @@
 /**
- * Responsive Design: адаптивность. Главная техника — переключатель устройств и container queries внутри рамки.
+ * Responsive Design: адаптивность. Главная техника — DeviceSwitcher + container queries в рамке.
  */
 import { useState } from 'react';
 import { Section } from '@/layout/Section';
@@ -17,8 +17,9 @@ export default function ResponsiveSection() {
       title="Одна вёрстка — три ширины"
       description="Рамка анимирует ширину, контент внутри живёт на container queries."
     >
-      <div className="mb-8">
+      <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <DeviceSwitcher value={mode} onChange={setMode} />
+        <p className="text-sm text-muted">Переключи режим и смотри, как перестраивается сетка.</p>
       </div>
       <DeviceFrame mode={mode}>
         <ResponsiveDemoContent />

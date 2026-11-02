@@ -102,3 +102,17 @@
     animation: none;
   }
 }
+
+.color-shift-card {
+  border-color: var(--border);
+  background: var(--surface);
+  transition:
+    background-color 0.5s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    border-color 0.5s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform 0.5s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.color-shift-card:hover {
+  border-color: color-mix(in srgb, var(--accent-pink) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent-pink) 12%, var(--surface));
+}

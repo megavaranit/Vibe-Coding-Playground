@@ -1,8 +1,11 @@
 # Текущий статус
 
 **Последнее обновление:** 2026-11-02
-**Текущий этап:** 7 — Футер и полировка / серверный тест
-**Следующая задача:** выкатить обновлённый Hero на VDS и проверить визуально; затем a11y / Lighthouse и responsive-чеки.
+**Текущий этап:** 7 — полировка модулей выкатана
+**Следующая задача:** прогнать Lighthouse ≥ 90; проверка 375/768/1440; og-image PNG/JPG; опционально reboot сервера.
+
+**Прод:** https://opsurgut.ru/ · GitHub: https://github.com/megavaranit/Vibe-Coding-Playground  
+**Последний деплой:** полировка Animations / Interactivity / Effects / Responsive / Footer / a11y.
 
 ## Прогресс по этапам
 
@@ -12,7 +15,7 @@
 - [x] Настроен алиас `@/`
 - [x] Настроены ESLint и Prettier
 - [x] Папка `docs/` и `.cursor/rules/` на месте
-- [x] Первый коммит (`c5f5bfb` — Initial commit: scaffold Vibe Coding Playground.)
+- [x] Первый коммит (`c5f5bfb`)
 
 ### 1. Фундамент
 - [x] `tokens.css`, `themes.css`, `effects.css`
@@ -21,71 +24,64 @@
 - [x] `Container`, `Section`
 - [x] `lib/motion.ts`
 - [x] `Header`, `NavLinks`, `ScrollProgress`
-- [x] `sections.config.ts` и `App` с секциями-заглушками
+- [x] `sections.config.ts` и `App` с lazy-секциями
 
 ### 2. Hero
-- [x] AnimatedBackground (mesh-drift keyframes + mouse parallax, сетка, зерно)
-- [x] HeroTitle (blur-stagger по словам, CTA)
-- [x] ScrollHint (`prefers-reduced-motion`)
-- [x] HeroSection (parallax + fade на скролле)
+- [x] AnimatedBackground (cool violet/cyan mesh)
+- [x] HeroTitle (`--gradient-title`, blur-stagger 2 с)
+- [x] ScrollHint
+- [x] HeroSection (parallax)
+- [x] Выкатка Hero на VDS
 
 ### 3. Animations
-- [x] ScrollReveal
+- [x] ScrollReveal (direction / delay / once / parallax)
 - [x] StaggerCards + `animations.data.ts`
-- [x] HoverTiltCard
-- [x] AnimationsSection
+- [x] HoverTiltCard (3D + glare, reduced-motion)
+- [x] AnimationsSection + демо направлений ScrollReveal
 
 ### 4. Interactivity
-- [x] ConfettiButton
-- [x] MorphButton
-- [x] AnimatedSwitch
-- [x] AnimatedSlider
-- [x] LiveDemoPanel
+- [x] ConfettiButton (skip при reduced-motion)
+- [x] MorphButton (aria-busy / aria-live)
+- [x] AnimatedSwitch (focus + spring)
+- [x] AnimatedSlider (track + a11y)
+- [x] LiveDemoPanel (scale / rotate / glow от контролов)
 - [x] InteractivitySection
 
 ### 5. Visual Effects
-- [x] GlassCard
-- [x] GlowCard
-- [x] GradientBorderCard
-- [x] ColorShiftCard
-- [x] EffectsSection
+- [x] GlassCard / GlowCard / GradientBorderCard / ColorShiftCard
+- [x] EffectsSection (stagger whileInView)
+- [x] Классы в `effects.css` (+ `.color-shift-card`)
 
 ### 6. Responsive Design
-- [x] DeviceSwitcher
-- [x] DeviceFrame
-- [x] ResponsiveDemoContent (container queries)
+- [x] DeviceSwitcher (layoutId, hints 1024/768/375)
+- [x] DeviceFrame (chrome + spring width / reduced-motion)
+- [x] ResponsiveDemoContent (container queries + desktop-only блок)
 - [x] ResponsiveSection
 
 ### 7. Футер и полировка
-- [x] Footer (призыв к курсу, ссылка на GitHub)
-- [x] Полировка Hero (mesh-gradient keyframes, blur-stagger)
-- [ ] Проверка на 375 / 768 / 1440 px
-- [ ] `prefers-reduced-motion`, фокус, aria
-- [ ] og-image и favicon
+- [x] Footer (`#course`, GitHub, CTA)
+- [x] Skip-link, focus-visible, aria в навигации/контролах
+- [x] OG/Twitter meta в `index.html` (картинка пока favicon.svg)
+- [ ] Проверка на 375 / 768 / 1440 px вручную
 - [ ] Lighthouse: Performance и Accessibility от 90
+- [ ] Отдельный og-image (PNG/JPG)
 
 ### 8. Деплой
-- [x] Репозиторий на GitHub: https://github.com/megavaranit/Vibe-Coding-Playground
-- [x] VDS настроен (Ubuntu, Node 22, nginx, UFW): проект собран и отдаётся статикой
-- [x] Тестовый доступ по IP: http://176.124.223.209/
-- [x] DNS `opsurgut.ru` → VDS
-- [x] HTTPS (Let's Encrypt / Certbot)
+- [x] Репозиторий на GitHub
+- [x] VDS + DNS + HTTPS на `opsurgut.ru`
+- [x] Выкатить полировку модулей на VDS
 - [ ] Деплой на Vercel / GitHub Pages (опционально)
-- [x] Проверена публичная ссылка по домену: https://opsurgut.ru/
 
 ## Принятые решения
 - Стек: Vite + React + TypeScript + Tailwind v4 + Motion.
-- Тема через `data-theme` и CSS-переменные.
-- Адаптивность в демо — через container queries.
-- TypeScript зафиксирован на 5.9: typescript-eslint пока не поддерживает TypeScript 7.
-- `npm install` использует `legacy-peer-deps` (см. `.npmrc`) из‑за peer-зависимостей ESLint-стека.
-- Репозиторий публичный, remote `origin` → `main` (аккаунт `megavaranit`).
-- Инициализация сверена с `ARCHITECTURE.md`: `npm run build` и `npm run lint` проходят, `npm run dev` поднимается.
-- Прод-тест: VDS `/var/www/vibe-coding-playground`, nginx + HTTPS на `opsurgut.ru`.
-- Hero: mesh-drift только через `transform`; blur-stagger отключается при `prefers-reduced-motion`.
+- Секции **не** импортируют друг друга (ScrollReveal остаётся в `animations/`).
+- Hero: фон cool violet/cyan; заголовок `--gradient-title` (lime/amber/pink); reveal 2 с.
+- Анимируем `transform` / `opacity`; исключение — `DeviceFrame` (width/layout).
+- Сложные эффекты уважают `prefers-reduced-motion`.
 
 ## Известные проблемы
 - На сервере после `apt upgrade` рекомендован reboot (новое ядро).
+- OG image временно указывает на `favicon.svg` — соцсети лучше едят PNG/JPG.
 
 ## Как обновлять этот файл
 После каждой выполненной задачи отметь её `[x]`, обнови «Текущий этап» и «Следующая задача». Новые решения и проблемы добавляй в соответствующие разделы.
