@@ -10,7 +10,10 @@
   --accent-pink: #f472b6;
   --accent-lime: #a3e635;
   --accent-amber: #fbbf24;
-  --glow: 0 0 40px rgba(139, 92, 246, 0.45);
+  --glow:
+    0 0 16px rgba(139, 92, 246, 0.35),
+    0 0 40px rgba(139, 92, 246, 0.45),
+    0 0 72px rgba(34, 211, 238, 0.22);
 }
 
 [data-theme='light'] {
@@ -25,5 +28,8 @@
   --accent-pink: #db2777;
   --accent-lime: #65a30d;
   --accent-amber: #d97706;
-  --glow: 0 8px 30px rgba(124, 58, 237, 0.25);
+  --glow:
+    0 0 14px rgba(124, 58, 237, 0.28),
+    0 0 36px rgba(124, 58, 237, 0.32),
+    0 8px 40px rgba(8, 145, 178, 0.18);
 }

@@ -1,11 +1,11 @@
 # Текущий статус
 
 **Последнее обновление:** 2026-11-02
-**Текущий этап:** 7 — полировка модулей выкатана
+**Текущий этап:** 7 — визуальные фиксы выкатаны
 **Следующая задача:** прогнать Lighthouse ≥ 90; проверка 375/768/1440; og-image PNG/JPG; опционально reboot сервера.
 
 **Прод:** https://opsurgut.ru/ · GitHub: https://github.com/megavaranit/Vibe-Coding-Playground  
-**Последний деплой:** полировка Animations / Interactivity / Effects / Responsive / Footer / a11y.
+**Последний деплой:** фиксы Hero (без scroll-parallax фона), glass/glow/gradient-border, LiveDemo без rotate.
 
 ## Прогресс по этапам
 

@@ -45,7 +45,7 @@ export default function EffectsSection() {
           aria-hidden
         />
         <motion.div
-          className="relative grid gap-4 sm:grid-cols-2"
+          className="relative grid gap-5 overflow-visible p-1 sm:grid-cols-2"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

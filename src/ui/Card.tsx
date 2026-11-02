@@ -6,10 +6,13 @@ type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export function Card({ children, className, ...props }: CardProps) {
+  const isGlass = typeof className === 'string' && className.split(/\s+/).includes('glass');
+
   return (
     <div
       className={cn(
-        'rounded-[var(--radius-card)] border border-border bg-surface p-6',
+        'rounded-[var(--radius-card)] border border-border p-6',
+        !isGlass && 'bg-surface',
         className,
       )}
       {...props}

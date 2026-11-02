@@ -10,7 +10,7 @@ export function AnimatedSlider({ value, onChange }: AnimatedSliderProps) {
   return (
     <label className="block">
       <span className="mb-3 flex justify-between text-sm text-muted">
-        Интенсивность
+        Сила орба
         <span className="font-mono text-text tabular-nums">{value}</span>
       </span>
       <div className="relative h-10">
@@ -34,7 +34,7 @@ export function AnimatedSlider({ value, onChange }: AnimatedSliderProps) {
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={value}
-          aria-label="Интенсивность превью"
+          aria-label="Сила орба в превью"
           onChange={(event) => onChange(Number(event.target.value))}
           className="absolute inset-0 w-full cursor-pointer appearance-none bg-transparent accent-[var(--accent-violet)]"
         />
