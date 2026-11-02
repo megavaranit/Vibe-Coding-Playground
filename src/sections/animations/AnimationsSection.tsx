@@ -29,7 +29,8 @@ export default function AnimationsSection() {
           ScrollReveal directions
         </p>
         <p className="mb-6 max-w-2xl text-sm text-muted">
-          Один компонент — разные направления входа. У «снизу» включён лёгкий parallax.
+          Один компонент — разные направления входа. Прокрути блок вверх-вниз: анимация
+          повторяется. У «снизу» включён лёгкий parallax.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {revealSamples.map((sample) => (
@@ -37,14 +38,14 @@ export default function AnimationsSection() {
               key={sample.label}
               direction={sample.direction}
               delay={sample.delay}
-              once
+              once={false}
               parallax={sample.parallax}
             >
-              <Card className="min-h-36">
+              <Card className="min-h-36 overflow-hidden">
                 <Badge>{sample.direction}</Badge>
                 <p className="mt-4 font-display text-lg">{sample.label}</p>
                 <p className="mt-2 text-sm text-muted">
-                  delay {sample.delay}s · once
+                  delay {sample.delay}s · replay
                   {sample.parallax ? ' · parallax' : ''}
                 </p>
               </Card>

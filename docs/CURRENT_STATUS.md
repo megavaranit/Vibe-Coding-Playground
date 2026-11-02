@@ -1,11 +1,11 @@
 # Текущий статус
 
 **Последнее обновление:** 2026-11-02
-**Текущий этап:** 9 — модуль заявок выкатан
+**Текущий этап:** 9 — модуль заявок выкатан; ScrollReveal demo с replay
 **Следующая задача:** Lighthouse ≥ 90; og-image PNG/JPG; проверка 375/768/1440; reboot сервера по желанию.
 
 **Прод:** https://opsurgut.ru/ · GitHub: https://github.com/megavaranit/Vibe-Coding-Playground  
-**Последний деплой:** модуль `#leads` + PHP API `/api/lead.php`.
+**Последний деплой:** ScrollReveal / StaggerCards — повтор анимации при скролле + заметные смещения.
 
 ## Прогресс по этапам
 
@@ -31,6 +31,7 @@
 
 ### 3. Animations
 - [x] ScrollReveal, StaggerCards, HoverTiltCard, демо directions
+- [x] Демо ScrollReveal/Stagger: `once: false`, усиленные offset, replay при скролле
 
 ### 4. Interactivity
 - [x] Confetti / Morph / Slider / Switch / LiveDemoPanel

@@ -11,10 +11,10 @@ import { easeOutExpo, viewportOnce } from '@/lib/motion';
 type Direction = 'up' | 'left' | 'right' | 'scale';
 
 const offset: Record<Direction, { x?: number; y?: number; scale?: number }> = {
-  up: { y: 28 },
-  left: { x: -32 },
-  right: { x: 32 },
-  scale: { scale: 0.94 },
+  up: { y: 56 },
+  left: { x: -64 },
+  right: { x: 64 },
+  scale: { scale: 0.82 },
 };
 
 type ScrollRevealProps = {
@@ -43,17 +43,29 @@ export function ScrollReveal({
   const parallaxY = useTransform(
     scrollYProgress,
     [0, 1],
-    reduced || !parallax ? [0, 0] : [28, -28],
+    reduced || !parallax ? [0, 0] : [40, -40],
   );
+
+  const variants = {
+    hidden: reduced
+      ? { opacity: 1, x: 0, y: 0, scale: 1 }
+      : { opacity: 0, x: 0, y: 0, scale: 1, ...offset[direction] },
+    visible: { opacity: 1, x: 0, y: 0, scale: 1 },
+  };
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={reduced ? { opacity: 1 } : { opacity: 0, ...offset[direction] }}
-      whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      viewport={once ? viewportOnce : { once: false, amount: 0.2 }}
-      transition={{ duration: 0.65, delay, ease: easeOutExpo }}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={
+        once
+          ? viewportOnce
+          : { once: false, amount: 0.35, margin: '0px 0px -12% 0px' }
+      }
+      transition={{ duration: 0.7, delay, ease: easeOutExpo }}
     >
       <motion.div style={parallax && !reduced ? { y: parallaxY } : undefined}>
         {children}

@@ -2,7 +2,7 @@
  * StaggerCards: каскад карточек. Главная техника — staggerChildren 0.08.
  */
 import { motion } from 'motion/react';
-import { fadeUp, staggerContainer, viewportOnce } from '@/lib/motion';
+import { fadeUp, staggerContainer } from '@/lib/motion';
 import { animationCards } from '@/sections/animations/animations.data';
 import { HoverTiltCard } from '@/sections/animations/HoverTiltCard';
 import { Badge } from '@/ui/Badge';
@@ -14,7 +14,7 @@ export function StaggerCards() {
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
-      viewport={viewportOnce}
+      viewport={{ once: false, amount: 0.25, margin: '0px 0px -10% 0px' }}
     >
       {animationCards.map((card) => (
         <motion.div key={card.title} variants={fadeUp} className="h-full">
