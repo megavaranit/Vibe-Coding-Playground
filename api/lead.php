@@ -34,7 +34,11 @@ $email = trim((string)($data['email'] ?? ''));
 $service = trim((string)($data['service'] ?? ''));
 $message = trim((string)($data['message'] ?? ''));
 
-if (mb_strlen($name) < 2 || mb_strlen(preg_replace('/[^\d+]/', '', $phone)) < 10 || $service === '') {
+$phoneDigits = preg_replace('/[^\d+]/', '', $phone);
+$nameLen = function_exists('mb_strlen') ? mb_strlen($name) : strlen($name);
+$phoneLen = function_exists('mb_strlen') ? mb_strlen($phoneDigits) : strlen($phoneDigits);
+
+if ($nameLen < 2 || $phoneLen < 10 || $service === '') {
   http_response_code(422);
   echo json_encode(['ok' => false, 'error' => 'Validation failed']);
   exit;
