@@ -11,7 +11,8 @@
 | Иконки | `lucide-react` | Только нужные иконки, импорт по имени |
 | Шрифты | `@fontsource-variable/space-grotesk`, `@fontsource-variable/inter`, `@fontsource-variable/jetbrains-mono` | Локально, без внешних запросов |
 | Качество | ESLint + Prettier | Запускать перед коммитом |
-| Деплой | VDS (nginx) + опционально Vercel / GitHub Pages | Сейчас: статика `dist/` на VDS; домен `opsurgut.ru` |
+| Деплой | VDS (nginx) + опционально Vercel / GitHub Pages | Статика `dist/` на VDS; домен `opsurgut.ru` |
+| Заявки | `api/lead.php` | POST JSON → `api/data/leads.jsonl`; endpoint задаётся `VITE_LEADS_ENDPOINT` |
 
 Версии: ставить последние стабильные мажорные версии на момент старта и зафиксировать их в `package.json`.
 

@@ -5,7 +5,7 @@
 ## Слои и правила зависимостей
 - `app/` — сборка страницы: реестр секций, провайдер темы.
 - `layout/` — каркас: Header, Footer, Section, Container, ScrollProgress.
-- `sections/` — шесть блоков-модулей. **Секции не импортируют друг друга.**
+- `sections/` — блоки-модули страницы. **Секции не импортируют друг друга.**
 - `ui/` — общие примитивы без бизнес-логики (Button, Card, Badge...).
 - `hooks/`, `lib/` — хуки, пресеты анимаций, утилиты.
 - Зависимости идут только вниз: sections → ui, hooks, lib; layout → ui, hooks, lib.
@@ -22,11 +22,13 @@ src/
 │   ├── animations/      AnimationsSection, StaggerCards, HoverTiltCard, ScrollReveal, animations.data.ts
 │   ├── interactivity/   InteractivitySection, ConfettiButton, MorphButton, AnimatedSlider, AnimatedSwitch, LiveDemoPanel
 │   ├── effects/         EffectsSection, GlassCard, GlowCard, GradientBorderCard, ColorShiftCard, effects.data.ts
-│   └── responsive/      ResponsiveSection, DeviceSwitcher, DeviceFrame, ResponsiveDemoContent
+│   ├── responsive/      ResponsiveSection, DeviceSwitcher, DeviceFrame, ResponsiveDemoContent
+│   └── leads/           LeadFormSection, LeadForm, FormField, leads.data.ts
 ├── ui/             Button, Card, Badge, SectionHeading, GradientText
 ├── hooks/          useTheme, useMediaQuery, useReducedMotion, useMousePosition
 ├── lib/            motion.ts, confetti.ts, cn.ts, constants.ts
 └── types/          section.ts
+api/                lead.php — приём заявок, data/leads.jsonl
 ```
 
 ## Реестр секций
@@ -39,6 +41,7 @@ src/
 **Interactivity:** ConfettiButton — конфетти из точки клика; MorphButton — idle → loading → success; AnimatedSlider и AnimatedSwitch — управляют LiveDemoPanel; LiveDemoPanel — превью, реагирующее на элементы управления. Состояние держит InteractivitySection.
 **Effects:** GlassCard (backdrop-blur), GlowCard (неоновое свечение), GradientBorderCard (conic-gradient + @property), ColorShiftCard (смена акцента на hover).
 **Responsive:** DeviceSwitcher — сегментированный контроль (layoutId); DeviceFrame — рамка 1024 / 768 / 375 px; ResponsiveDemoContent — контент на container queries.
+**Leads:** LeadFormSection — форма заявки; LeadForm — валидация и состояния idle/submitting/success/error; отправка на `VITE_LEADS_ENDPOINT` (по умолчанию `/api/lead.php`); fallback в `localStorage` если API недоступен.
 **Footer:** О проекте, ссылка на GitHub, призыв пройти курс.
 
 ## Тема и токены

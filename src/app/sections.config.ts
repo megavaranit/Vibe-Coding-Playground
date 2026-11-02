@@ -27,4 +27,9 @@ export const sections: SectionConfig[] = [
     navLabel: 'Responsive',
     component: lazy(() => import('@/sections/responsive/ResponsiveSection')),
   },
+  {
+    id: 'leads',
+    navLabel: 'Заявка',
+    component: lazy(() => import('@/sections/leads/LeadFormSection')),
+  },
 ];

@@ -1,11 +1,11 @@
 # Текущий статус
 
 **Последнее обновление:** 2026-11-02
-**Текущий этап:** 7 — визуальные фиксы выкатаны
-**Следующая задача:** прогнать Lighthouse ≥ 90; проверка 375/768/1440; og-image PNG/JPG; опционально reboot сервера.
+**Текущий этап:** 9 — модуль заявок выкатан
+**Следующая задача:** Lighthouse ≥ 90; og-image PNG/JPG; проверка 375/768/1440; reboot сервера по желанию.
 
 **Прод:** https://opsurgut.ru/ · GitHub: https://github.com/megavaranit/Vibe-Coding-Playground  
-**Последний деплой:** ScrollReveal directions + LiveDemo (slider = scale/rotate, switch = glow only).
+**Последний деплой:** модуль `#leads` + PHP API `/api/lead.php`.
 
 ## Прогресс по этапам
 
@@ -27,61 +27,48 @@
 - [x] `sections.config.ts` и `App` с lazy-секциями
 
 ### 2. Hero
-- [x] AnimatedBackground (cool violet/cyan mesh)
-- [x] HeroTitle (`--gradient-title`, blur-stagger 2 с)
-- [x] ScrollHint
-- [x] HeroSection (parallax)
-- [x] Выкатка Hero на VDS
+- [x] AnimatedBackground / HeroTitle / ScrollHint / HeroSection
 
 ### 3. Animations
-- [x] ScrollReveal (direction / delay / once / parallax)
-- [x] StaggerCards + `animations.data.ts`
-- [x] HoverTiltCard (3D + glare, reduced-motion)
-- [x] AnimationsSection + демо направлений ScrollReveal
+- [x] ScrollReveal, StaggerCards, HoverTiltCard, демо directions
 
 ### 4. Interactivity
-- [x] ConfettiButton (skip при reduced-motion)
-- [x] MorphButton (aria-busy / aria-live)
-- [x] AnimatedSwitch (focus + spring)
-- [x] AnimatedSlider (track + a11y)
-- [x] LiveDemoPanel (scale / rotate / glow от контролов)
-- [x] InteractivitySection
+- [x] Confetti / Morph / Slider / Switch / LiveDemoPanel
 
 ### 5. Visual Effects
-- [x] GlassCard / GlowCard / GradientBorderCard / ColorShiftCard
-- [x] EffectsSection (stagger whileInView)
-- [x] Классы в `effects.css` (+ `.color-shift-card`)
+- [x] Glass / Glow / GradientBorder / ColorShift
 
 ### 6. Responsive Design
-- [x] DeviceSwitcher (layoutId, hints 1024/768/375)
-- [x] DeviceFrame (chrome + spring width / reduced-motion)
-- [x] ResponsiveDemoContent (container queries + desktop-only блок)
-- [x] ResponsiveSection
+- [x] DeviceSwitcher / DeviceFrame / ResponsiveDemoContent
 
 ### 7. Футер и полировка
-- [x] Footer (`#course`, GitHub, CTA)
-- [x] Skip-link, focus-visible, aria в навигации/контролах
-- [x] OG/Twitter meta в `index.html` (картинка пока favicon.svg)
+- [x] Footer, skip-link, focus/aria, OG meta (favicon временно)
 - [ ] Проверка на 375 / 768 / 1440 px вручную
-- [ ] Lighthouse: Performance и Accessibility от 90
+- [ ] Lighthouse ≥ 90
 - [ ] Отдельный og-image (PNG/JPG)
 
 ### 8. Деплой
-- [x] Репозиторий на GitHub
-- [x] VDS + DNS + HTTPS на `opsurgut.ru`
-- [x] Выкатить полировку модулей на VDS
+- [x] GitHub + VDS + DNS + HTTPS
+- [x] Выкатить модуль Leads + PHP API
 - [ ] Деплой на Vercel / GitHub Pages (опционально)
+
+### 9. Leads (заявки)
+- [x] `LeadFormSection` + `LeadForm` + `FormField` + `leads.data.ts`
+- [x] Запись в `sections.config.ts` (id: `leads`, nav: «Заявка»)
+- [x] `api/lead.php` (сохранение в `api/data/leads.jsonl`)
+- [x] Fallback в `localStorage`, если API недоступен
+- [x] PHP-FPM + nginx location `/api/` на VDS
 
 ## Принятые решения
 - Стек: Vite + React + TypeScript + Tailwind v4 + Motion.
-- Секции **не** импортируют друг друга (ScrollReveal остаётся в `animations/`).
-- Hero: фон cool violet/cyan; заголовок `--gradient-title` (lime/amber/pink); reveal 2 с.
-- Анимируем `transform` / `opacity`; исключение — `DeviceFrame` (width/layout).
-- Сложные эффекты уважают `prefers-reduced-motion`.
+- Секции не импортируют друг друга.
+- Заявки: POST JSON на `/api/lead.php` (или `VITE_LEADS_ENDPOINT`); файлы заявок не коммитятся (`api/data/*.jsonl`).
+- LiveDemo: slider = scale/rotate; switch = glow only.
+- Hero: без scroll-parallax фона; title через `--gradient-title`.
 
 ## Известные проблемы
 - На сервере после `apt upgrade` рекомендован reboot (новое ядро).
-- OG image временно указывает на `favicon.svg` — соцсети лучше едят PNG/JPG.
+- OG image временно указывает на `favicon.svg`.
 
 ## Как обновлять этот файл
 После каждой выполненной задачи отметь её `[x]`, обнови «Текущий этап» и «Следующая задача». Новые решения и проблемы добавляй в соответствующие разделы.

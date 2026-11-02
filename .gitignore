@@ -35,5 +35,8 @@ Thumbs.db
 .vercel
 .output
 
+# Lead form submissions (server)
+api/data/*.jsonl
+
 # OS / temp
 tmp-vite
