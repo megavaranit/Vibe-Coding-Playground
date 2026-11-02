@@ -1,5 +1,5 @@
 /**
- * LiveDemoPanel: превью. Слайдер — сила свечения орба, переключатель — glow on/off.
+ * LiveDemoPanel: слайдер — размер и угол; переключатель — свечение (независимо от слайдера).
  */
 import { motion } from 'motion/react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -13,38 +13,28 @@ type LiveDemoPanelProps = {
 
 export function LiveDemoPanel({ intensity, glowEnabled }: LiveDemoPanelProps) {
   const reduced = useReducedMotion();
-  const orbSize = 72 + intensity * 0.9;
-  const orbOpacity = 0.35 + intensity * 0.005;
+  const scale = 0.85 + intensity * 0.003;
+  const rotate = reduced ? 0 : (intensity - 50) * 0.24;
 
   return (
     <Card className={cn('relative overflow-hidden', glowEnabled && 'glow')}>
       <p className="font-mono text-xs tracking-[0.18em] text-accent-cyan uppercase">Live</p>
       <p className="mt-3 font-display text-2xl">Живое превью</p>
       <p className="mt-2 text-muted">
-        Слайдер задаёт силу орба, переключатель включает неоновое свечение карточки.
+        Слайдер меняет размер и угол. Свечение включается только переключателем.
       </p>
 
-      <div className="relative mt-8 flex h-40 items-center justify-center rounded-[var(--radius-control)] bg-surface-2">
+      <div className="relative mt-8 flex h-44 items-center justify-center rounded-[var(--radius-control)] bg-surface-2">
         <motion.div
           aria-hidden
-          className="rounded-full"
-          animate={{
-            width: orbSize,
-            height: orbSize,
-            opacity: orbOpacity,
-          }}
+          className="size-28 rounded-[1.25rem]"
+          style={{ backgroundImage: 'var(--gradient-main)' }}
+          animate={{ scale, rotate }}
           transition={
             reduced
               ? { duration: 0.01 }
-              : { type: 'spring', stiffness: 220, damping: 28 }
+              : { type: 'spring', stiffness: 200, damping: 24 }
           }
-          style={{
-            backgroundImage: 'var(--gradient-main)',
-            boxShadow: glowEnabled
-              ? `0 0 ${20 + intensity * 0.5}px color-mix(in srgb, var(--accent-violet) 70%, transparent)`
-              : 'none',
-            filter: glowEnabled ? `blur(${Math.max(0, 8 - intensity * 0.04)}px)` : 'blur(2px)',
-          }}
         />
       </div>
 
@@ -57,7 +47,7 @@ export function LiveDemoPanel({ intensity, glowEnabled }: LiveDemoPanelProps) {
         />
       </div>
       <p className="mt-3 font-mono text-xs text-muted tabular-nums">
-        intensity {intensity}
+        scale {scale.toFixed(2)} · rotate {rotate.toFixed(1)}°
         {glowEnabled ? ' · glow on' : ' · glow off'}
       </p>
     </Card>

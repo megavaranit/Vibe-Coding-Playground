@@ -22,7 +22,7 @@ export default function InteractivitySection() {
       id="interactivity"
       eyebrow="Interactivity"
       title="Каждое действие видно"
-      description="Кнопки, слайдер силы орба и переключатель свечения управляют одним превью."
+      description="Слайдер крутит размер и угол, переключатель отдельно включает свечение."
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
         <motion.div

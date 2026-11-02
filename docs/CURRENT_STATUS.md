@@ -5,7 +5,7 @@
 **Следующая задача:** прогнать Lighthouse ≥ 90; проверка 375/768/1440; og-image PNG/JPG; опционально reboot сервера.
 
 **Прод:** https://opsurgut.ru/ · GitHub: https://github.com/megavaranit/Vibe-Coding-Playground  
-**Последний деплой:** фиксы Hero (без scroll-parallax фона), glass/glow/gradient-border, LiveDemo без rotate.
+**Последний деплой:** ScrollReveal directions + LiveDemo (slider = scale/rotate, switch = glow only).
 
 ## Прогресс по этапам
 

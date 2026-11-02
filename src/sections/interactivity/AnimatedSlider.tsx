@@ -1,5 +1,5 @@
 /**
- * AnimatedSlider: интенсивность для LiveDemoPanel.
+ * AnimatedSlider: угол и размер LiveDemoPanel.
  */
 type AnimatedSliderProps = {
   value: number;
@@ -10,7 +10,7 @@ export function AnimatedSlider({ value, onChange }: AnimatedSliderProps) {
   return (
     <label className="block">
       <span className="mb-3 flex justify-between text-sm text-muted">
-        Сила орба
+        Угол и размер
         <span className="font-mono text-text tabular-nums">{value}</span>
       </span>
       <div className="relative h-10">
@@ -34,7 +34,7 @@ export function AnimatedSlider({ value, onChange }: AnimatedSliderProps) {
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={value}
-          aria-label="Сила орба в превью"
+          aria-label="Угол и размер превью"
           onChange={(event) => onChange(Number(event.target.value))}
           className="absolute inset-0 w-full cursor-pointer appearance-none bg-transparent accent-[var(--accent-violet)]"
         />
