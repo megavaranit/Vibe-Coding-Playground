@@ -1,5 +1,6 @@
 /**
- * Hero: первое впечатление. Главная техника — mesh-gradient фон, parallax и stagger-появление заголовка.
+ * Hero: first viewport — brand, one headline, tagline, CTAs on an animated mesh field.
+ * Main technique — scroll parallax (transform) + composition of background / title / hint.
  */
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
@@ -18,16 +19,21 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 80]);
-  const titleY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 160]);
+  const titleY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 140]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.65], reduced ? [1, 1] : [1, 0.15]);
 
   return (
     <div ref={ref} className="relative">
-      <Section id="hero" withContainer={false} className="relative min-h-screen overflow-hidden pt-28">
+      <Section
+        id="hero"
+        withContainer={false}
+        className="relative min-h-svh overflow-hidden pt-24 md:pt-28"
+      >
         <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
           <AnimatedBackground />
         </motion.div>
-        <Container className="relative">
-          <motion.div style={{ y: titleY }}>
+        <Container className="relative flex min-h-[calc(100svh-7rem)] flex-col justify-center pb-24">
+          <motion.div style={{ y: titleY, opacity: titleOpacity }}>
             <HeroTitle />
           </motion.div>
         </Container>

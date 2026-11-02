@@ -10,6 +10,13 @@
     var(--accent-cyan) 50%,
     var(--accent-pink)
   );
+  /* Hero title: warm lime→amber→pink, отдельно от cool mesh (violet/cyan) */
+  --gradient-title: linear-gradient(
+    120deg,
+    var(--accent-lime),
+    var(--accent-amber) 48%,
+    var(--accent-pink)
+  );
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;

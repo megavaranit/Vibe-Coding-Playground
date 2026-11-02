@@ -2,7 +2,7 @@
 
 **Последнее обновление:** 2026-11-02
 **Текущий этап:** 7 — Футер и полировка / серверный тест
-**Следующая задача:** полировка Hero (mesh-gradient keyframes, blur-stagger заголовка), проверка на 375/768/1440, a11y и Lighthouse; подключить DNS `opsurgut.ru` → VDS и HTTPS (Certbot).
+**Следующая задача:** выкатить обновлённый Hero на VDS и проверить визуально; затем a11y / Lighthouse и responsive-чеки.
 
 ## Прогресс по этапам
 
@@ -24,10 +24,10 @@
 - [x] `sections.config.ts` и `App` с секциями-заглушками
 
 ### 2. Hero
-- [x] AnimatedBackground
-- [x] HeroTitle
-- [x] ScrollHint
-- [x] HeroSection (parallax)
+- [x] AnimatedBackground (mesh-drift keyframes + mouse parallax, сетка, зерно)
+- [x] HeroTitle (blur-stagger по словам, CTA)
+- [x] ScrollHint (`prefers-reduced-motion`)
+- [x] HeroSection (parallax + fade на скролле)
 
 ### 3. Animations
 - [x] ScrollReveal
@@ -58,6 +58,7 @@
 
 ### 7. Футер и полировка
 - [x] Footer (призыв к курсу, ссылка на GitHub)
+- [x] Полировка Hero (mesh-gradient keyframes, blur-stagger)
 - [ ] Проверка на 375 / 768 / 1440 px
 - [ ] `prefers-reduced-motion`, фокус, aria
 - [ ] og-image и favicon
@@ -67,10 +68,10 @@
 - [x] Репозиторий на GitHub: https://github.com/megavaranit/Vibe-Coding-Playground
 - [x] VDS настроен (Ubuntu, Node 22, nginx, UFW): проект собран и отдаётся статикой
 - [x] Тестовый доступ по IP: http://176.124.223.209/
-- [ ] DNS `opsurgut.ru` / Cloudflare → VDS
-- [ ] HTTPS (Let's Encrypt / Certbot)
+- [x] DNS `opsurgut.ru` → VDS
+- [x] HTTPS (Let's Encrypt / Certbot)
 - [ ] Деплой на Vercel / GitHub Pages (опционально)
-- [ ] Проверена публичная ссылка по домену
+- [x] Проверена публичная ссылка по домену: https://opsurgut.ru/
 
 ## Принятые решения
 - Стек: Vite + React + TypeScript + Tailwind v4 + Motion.
@@ -80,10 +81,10 @@
 - `npm install` использует `legacy-peer-deps` (см. `.npmrc`) из‑за peer-зависимостей ESLint-стека.
 - Репозиторий публичный, remote `origin` → `main` (аккаунт `megavaranit`).
 - Инициализация сверена с `ARCHITECTURE.md`: `npm run build` и `npm run lint` проходят, `npm run dev` поднимается.
-- Прод-тест: VDS, каталог `/var/www/vibe-coding-playground`, nginx отдаёт `dist/`, домен `opsurgut.ru` зарезервирован в `server_name` до подключения DNS.
+- Прод-тест: VDS `/var/www/vibe-coding-playground`, nginx + HTTPS на `opsurgut.ru`.
+- Hero: mesh-drift только через `transform`; blur-stagger отключается при `prefers-reduced-motion`.
 
 ## Известные проблемы
-- Домен `opsurgut.ru` ещё не указывает на VDS — сайт доступен по IP.
 - На сервере после `apt upgrade` рекомендован reboot (новое ядро).
 
 ## Как обновлять этот файл

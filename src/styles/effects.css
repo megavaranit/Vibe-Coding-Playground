@@ -63,3 +63,42 @@
     animation: none;
   }
 }
+
+/* Hero mesh blobs — animate only transform */
+.mesh-blob {
+  will-change: transform;
+  animation: mesh-drift 18s ease-in-out infinite;
+}
+
+.mesh-blob--a {
+  animation-duration: 20s;
+}
+
+.mesh-blob--b {
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+
+.mesh-blob--c {
+  animation-duration: 16s;
+  animation-delay: -4s;
+}
+
+@keyframes mesh-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-3%, 4%, 0) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-blob {
+    animation: none;
+  }
+}
