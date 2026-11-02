@@ -1,0 +1,65 @@
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.glow {
+  box-shadow: var(--glow);
+}
+
+.gradient-border {
+  position: relative;
+  isolation: isolate;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-violet),
+    var(--accent-cyan),
+    var(--accent-pink),
+    var(--accent-violet)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+
+@supports (background: paint(something)) or (color: color-mix(in srgb, red, blue)) {
+  .gradient-border:hover::before {
+    animation: spin-angle 4s linear infinite;
+  }
+}
+
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-border:hover::before {
+    animation: none;
+  }
+}

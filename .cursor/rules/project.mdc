@@ -1,0 +1,15 @@
+---
+description: Правила кода Vibe Coding Playground
+alwaysApply: true
+---
+
+Прочитай `docs/ARCHITECTURE.md` и `docs/TECH_STACK.md` перед правками.
+
+- Зависимости только вниз: sections → ui/hooks/lib; layout → ui/hooks/lib. Секции не импортируют друг друга.
+- Новый блок: папка в `src/sections/`, `export default`, запись в `app/sections.config.ts`.
+- Импорты из `src` — через алиас `@/`.
+- Цвета только токенами (`var(--accent-*)` или Tailwind-классы на токенах), без hex в компонентах.
+- Анимации — пресеты из `lib/motion.ts`. Анимировать `transform` и `opacity`. Учитывать `useReducedMotion()`.
+- Не добавлять роутер, стор и CSS-in-JS.
+- В шапке файла секции — комментарий: что показывает блок и какая техника главная.
+- После задачи обновить `docs/CURRENT_STATUS.md`.

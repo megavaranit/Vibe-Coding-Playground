@@ -1,0 +1,16 @@
+:root {
+  --radius-card: 24px;
+  --radius-control: 12px;
+  --radius-badge: 999px;
+  --space-section: 8rem;
+  --space-section-mobile: 5rem;
+  --gradient-main: linear-gradient(
+    135deg,
+    var(--accent-violet),
+    var(--accent-cyan) 50%,
+    var(--accent-pink)
+  );
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+}
